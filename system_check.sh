@@ -13,6 +13,12 @@ fi
 }
 echo "Server System Check ..."
 echo "=============================="
+check_disk() {
+echo ""
+echo "Disk usage ..."
+echo "=============================="
+df -h | grep "/$"
+}
 server_info
 echo "=============================="
 echo ""
@@ -22,5 +28,7 @@ SERVICES=("sshd" "firewalld" "crond")
 for service in "${SERVICES[@]}";do
 check_service "$service"
 done
+echo "=============================="
+check_disk
 echo "=============================="
 echo "Check Complete !"
